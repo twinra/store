@@ -1,0 +1,47 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+	}
+}
+apply plugin:'application'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	versions = [
+		gradle: '2.3',
+		groovy: '2.4.3',
+		juinit: '4.11',
+		springBoot: '1.2.3.RELEASE',
+	]
+}
+
+dependencies {
+	compile "org.codehaus.groovy:groovy-all:$versions.groovy"
+	compile "org.springframework.boot:spring-boot-starter-web:$versions.springBoot"
+	testCompile "junit:junit:$versions.junit"
+}
+
+mainClassName = 'org.twinra.store.StoreController'
+
+sourceCompatibility = 1.8
+
+task wrapper(type: Wrapper) {
+	gradleVersion = versions.gradle
+}
+
+idea {
+	module {
+		downloadJavadoc = true
+		downloadSources = true
+	}
+}
