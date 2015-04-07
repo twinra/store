@@ -20,7 +20,8 @@ ext {
 	versions = [
 		gradle: '2.3',
 		groovy: '2.4.3',
-		juinit: '4.11',
+		junit: '4.11',
+		lombok: '1.16.2',
 		springBoot: '1.2.3.RELEASE',
 	]
 }
@@ -28,6 +29,7 @@ ext {
 dependencies {
 	compile "org.codehaus.groovy:groovy-all:$versions.groovy"
 	compile "org.springframework.boot:spring-boot-starter-web:$versions.springBoot"
+	compile "org.projectlombok:lombok:$versions.lombok"
 	testCompile "junit:junit:$versions.junit"
 }
 
@@ -37,6 +39,7 @@ sourceCompatibility = 1.8
 
 task wrapper(type: Wrapper) {
 	gradleVersion = versions.gradle
+	distributionUrl = "http://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 idea {

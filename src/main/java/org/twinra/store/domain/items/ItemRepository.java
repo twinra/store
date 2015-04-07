@@ -1,7 +1,7 @@
-package org.twinra.store.domain.repositories;
+package org.twinra.store.domain.items;
 
 import org.springframework.stereotype.Service;
-import org.twinra.store.domain.Item;
+import org.twinra.store.domain.items.Item;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ public class ItemRepository {
 	@PostConstruct
 	private void init() {
 		List<Item> itemList = new ArrayList<>();
-		itemList.add(new Item("Hummer", "heavy, simple and reliable", 3));
-		itemList.add(new Item("Phone", "antique one", 20));
-		itemList.add(new Item("Hat", "fashionable and modern, girls like it", 50));
+		itemList.add(Item.builder().name("Hummer").description("heavy, simple and reliable").price(3).build());
+		itemList.add(Item.builder().name("Flashlight").description("pocket edition").price(10).build());
+		itemList.add(Item.builder().name("Hat").description("fashionable and modern, girls like it").price(50).build());
 
 		for(Item itm : itemList)
 			items.put(itm.getName(), itm);

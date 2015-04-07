@@ -1,7 +1,6 @@
-package org.twinra.store.domain.repositories;
+package org.twinra.store.domain.customers;
 
 import org.springframework.stereotype.Service;
-import org.twinra.store.domain.Customer;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -17,9 +16,9 @@ public class CustomerRepository {
 	@PostConstruct
 	private void init() {
 		List<Customer> customerList = new ArrayList<>();
-		customerList.add(new Customer("Vasya", "vk.com: vasyok11"));
-		customerList.add(new Customer("Masha", "phone: +7(926)123-45-67"));
-		customerList.add(new Customer("Petya", "email: just@petya.org"));
+		customerList.add(Customer.builder().name("Vasya").contacts("vk.com: vasyok11").build());
+		customerList.add(Customer.builder().name("Masha").contacts("phone: +7(926)123-45-67").build());
+		customerList.add(Customer.builder().name("Petya").contacts("email: just@petya.org").build());
 
 		for(Customer itm : customerList)
 			customers.put(itm.getName(), itm);
